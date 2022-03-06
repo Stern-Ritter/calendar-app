@@ -11,9 +11,9 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { Task } from "./Task";
+import Task from "./Task";
 import TasksCalendar from "./TasksCalendar";
-import { taskConverter } from "./utils/taskConverter";
+import { taskConverter } from "../utils/taskConverter";
 
 export default class FirebaseTasksCalendar extends TasksCalendar {
   private app;

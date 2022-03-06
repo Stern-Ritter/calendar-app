@@ -3,8 +3,8 @@
  */
 
 import FirebaseTasksCalendar from "./FirebaseTasksCalendar";
-import { Task, TaskOptions } from "./Task";
-import { firebaseConfig } from "./utils/config";
+import Task from "./Task";
+import { firebaseConfig } from "../utils/config";
 
 let storage: FirebaseTasksCalendar;
 const collectionName = "calendar-tasks";

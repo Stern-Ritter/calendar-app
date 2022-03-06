@@ -1,4 +1,4 @@
-import { Task } from "../Task";
+import Task from "../model/Task";
 
 const taskConverter = {
   toFirestore: (task: Task) => ({

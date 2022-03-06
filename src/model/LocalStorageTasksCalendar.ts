@@ -1,4 +1,4 @@
-import { Task } from "./Task";
+import Task from "./Task";
 import TasksCalendar from "./TasksCalendar";
 
 export default class LocalStorageTasksCalendar extends TasksCalendar {
