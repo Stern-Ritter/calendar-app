@@ -41,6 +41,18 @@ module.exports = {
       "error",
       { allow: ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] },
     ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { exceptAfterSingleLine: true },
+    ],
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement",
+    ],
   },
   settings: {
     react: {
