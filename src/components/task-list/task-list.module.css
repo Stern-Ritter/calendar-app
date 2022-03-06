@@ -1,0 +1,25 @@
+.title {
+  padding: 10px 0;
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.remaining {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.list {
+  max-width: 768px;
+  padding: 10px;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  list-style-type: none;
+}

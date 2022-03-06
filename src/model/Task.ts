@@ -1,18 +1,3 @@
-const taskStates = ["to do", "done"] as const;
-
-type TaskState = typeof taskStates[number];
-
-type TaskOptions = {
-  id?: string;
-  name: string;
-  createdDate: number;
-  eventDate: number;
-  category: string;
-  tags: string[];
-  state: TaskState;
-  description: string;
-};
-
 class Task {
   readonly id: string;
   public name: string;
@@ -45,4 +30,4 @@ class Task {
   }
 }
 
-export { Task, TaskOptions };
+export { Task };
