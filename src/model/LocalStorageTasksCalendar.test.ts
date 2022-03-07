@@ -1,6 +1,6 @@
 import LocalStorageTasksCalendar from "./LocalStorageTasksCalendar";
 import Task from "./Task";
-import { storageKey } from "../utils/config";
+import { storageKey } from "../utils/api";
 
 let storage: LocalStorageTasksCalendar;
 
