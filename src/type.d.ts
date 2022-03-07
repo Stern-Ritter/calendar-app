@@ -18,3 +18,9 @@ type TaskOptions = {
 type TaskProps = {
   content: TaskOptions;
 };
+
+type TagInputProps = {
+  name: string;
+  tags: string[];
+  setTags: React.Dispatch<React.SetStateAction<string[]>>;
+};
