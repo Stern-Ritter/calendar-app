@@ -1,5 +1,8 @@
 const storageKey = "calendar-tasks";
 
+const collectionName = "calendar-tasks";
+const collectionTestName = "calendar-tasks-test";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBCwWOSumanDKGvZCJTjYuBNClE1Ypz3Z0",
   authDomain: "mytaskcalendar-961ee.firebaseapp.com",
@@ -9,4 +12,4 @@ const firebaseConfig = {
   appId: "1:144127656421:web:10100fd106f50697786f0c",
 };
 
-export { storageKey, firebaseConfig };
+export { storageKey, collectionName, firebaseConfig, collectionTestName };

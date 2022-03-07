@@ -4,14 +4,13 @@
 
 import FirebaseTasksCalendar from "./FirebaseTasksCalendar";
 import Task from "./Task";
-import { firebaseConfig } from "../utils/api";
+import { firebaseConfig, collectionTestName } from "../utils/api";
 
 let storage: FirebaseTasksCalendar;
-const collectionName = "calendar-tasks";
 
-describe("LocalStorageTasksCalendar", () => {
+describe("FirebaseTasksCalendar", () => {
   beforeAll(() => {
-    storage = new FirebaseTasksCalendar(firebaseConfig, collectionName);
+    storage = new FirebaseTasksCalendar(firebaseConfig, collectionTestName);
   });
 
   afterAll(async () => {
@@ -200,13 +199,12 @@ describe("LocalStorageTasksCalendar", () => {
     });
 
     const firstTask = (await storage.getById(elements[0].id as string)) as Task;
-    const expectedTask = {
-      ...firstTask,
+    const expectedTask = Object.assign(firstTask, {
       name: "new task",
       category: "new category",
       state: "done",
       description: "new description",
-    };
+    });
 
     const done = await storage.update(expectedTask);
     const updatedFirstTask = await storage.getById(elements[0].id as string);

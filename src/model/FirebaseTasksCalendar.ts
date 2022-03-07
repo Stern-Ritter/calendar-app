@@ -27,7 +27,7 @@ export default class FirebaseTasksCalendar extends TasksCalendar {
     this.collectionName = collectionName;
   }
 
-  async getAll(): Promise<Task[]> {
+  async getAll(): Promise<Task[] | null> {
     try {
       const ref = collection(this.db, this.collectionName).withConverter(
         taskConverter
@@ -38,7 +38,7 @@ export default class FirebaseTasksCalendar extends TasksCalendar {
       return tasks;
     } catch (err) {
       console.log("Error get documents: ", err);
-      return [];
+      return null;
     }
   }
 
@@ -99,8 +99,13 @@ export default class FirebaseTasksCalendar extends TasksCalendar {
 
   async update(task: Task): Promise<boolean> {
     try {
-      await setDoc(doc(this.db, this.collectionName, String(task.id)), task);
-      console.log("Document updated with ID: ", task.id);
+      const ref = doc(
+        this.db,
+        this.collectionName,
+        String(task.getId())
+      ).withConverter(taskConverter);
+      await setDoc(ref, task);
+      console.log("Document updated with ID: ", task.getId());
       return true;
     } catch (err) {
       console.log("Error updating document: ", err);
@@ -121,11 +126,11 @@ export default class FirebaseTasksCalendar extends TasksCalendar {
 
   async deleteAll(): Promise<boolean> {
     try {
-      const tasks = await this.getAll();
+      const tasks = (await this.getAll()) ?? [];
       const operations: Promise<void>[] = [];
       tasks.forEach((task) =>
         operations.push(
-          deleteDoc(doc(this.db, this.collectionName, String(task.id)))
+          deleteDoc(doc(this.db, this.collectionName, String(task.getId())))
         )
       );
       await Promise.all(operations);

@@ -1,5 +1,5 @@
 class Task {
-  readonly id: string;
+  private id: string;
   public name: string;
   public createdDate: number;
   public eventDate: number;
@@ -7,6 +7,18 @@ class Task {
   public tags: string[];
   public state: string;
   public description: string;
+
+  getId(): string {
+    return this.id;
+  }
+
+  setId(id: string): boolean {
+    if (this.id === "") {
+      this.id = id;
+      return true;
+    }
+    return false;
+  }
 
   constructor(options: TaskOptions) {
     const {
