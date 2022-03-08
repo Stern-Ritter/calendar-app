@@ -17,7 +17,12 @@ import {
   deleteTask,
 } from "./task-list";
 
-import { TASK_FORM_SET_VALUE, setTaskFormValue } from "./task-form";
+import {
+  TASK_FORM_SET_STATE,
+  TASK_FORM_SET_VALUE,
+  TASK_FORM_CLEAR_STATE,
+  setTaskFormValue,
+} from "./task-form";
 
 export {
   GET_TASKS,
@@ -36,6 +41,8 @@ export {
   createTask,
   updateTask,
   deleteTask,
+  TASK_FORM_SET_STATE,
   TASK_FORM_SET_VALUE,
+  TASK_FORM_CLEAR_STATE,
   setTaskFormValue,
 };

@@ -83,7 +83,7 @@ type TASK_ACTION =
 const tasksInitialState = {
   loading: false,
   hasError: false,
-  tasks: [] as Task[],
+  data: [] as Task[],
   createTaskRequest: false,
   createTaskFailed: false,
   updateTaskRequest: false,
@@ -105,7 +105,7 @@ const tasksReducer = (state = tasksInitialState, action: TASK_ACTION) => {
       return {
         ...state,
         loading: false,
-        tasks: action.payload,
+        data: action.payload.reverse(),
       };
     }
     case GET_TASKS_FAILED: {
@@ -126,7 +126,7 @@ const tasksReducer = (state = tasksInitialState, action: TASK_ACTION) => {
       return {
         ...state,
         createTaskRequest: false,
-        tasks: [...state.tasks, action.payload],
+        data: [...state.data, action.payload],
       };
     }
     case CREATE_TASK_FAILED: {
@@ -147,7 +147,7 @@ const tasksReducer = (state = tasksInitialState, action: TASK_ACTION) => {
       return {
         ...state,
         updateTaskRequest: false,
-        tasks: [...state.tasks].map((task) =>
+        data: [...state.data].map((task) =>
           task.getId() === action.payload.getId() ? action.payload : task
         ),
       };
@@ -170,9 +170,7 @@ const tasksReducer = (state = tasksInitialState, action: TASK_ACTION) => {
       return {
         ...state,
         deleteTaskRequest: false,
-        tasks: [...state.tasks].filter(
-          (task) => task.getId() !== action.payload
-        ),
+        data: [...state.data].filter((task) => task.getId() !== action.payload),
       };
     }
     case DELETE_TASK_FAILED: {

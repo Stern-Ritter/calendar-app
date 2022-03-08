@@ -1,5 +1,6 @@
 import storage from "../../model/storage";
 import Task from "../../model/Task";
+import { TASK_FORM_CLEAR_STATE } from ".";
 import { AppDispatch } from "../store/store";
 
 export const GET_TASKS = "GET_TASKS";
@@ -42,6 +43,7 @@ export function createTask(task: Task) {
       if (id !== null) {
         task.setId(id);
         dispatch({ type: CREATE_TASK_SUCCESS, payload: task });
+        dispatch({ type: TASK_FORM_CLEAR_STATE });
       } else {
         dispatch({ type: CREATE_TASK_FAILED });
       }
@@ -58,6 +60,7 @@ export function updateTask(task: Task) {
       const success = await storage.update(task);
       if (success) {
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: task });
+        dispatch({ type: TASK_FORM_CLEAR_STATE });
       } else {
         dispatch({ type: UPDATE_TASK_FAILED });
       }

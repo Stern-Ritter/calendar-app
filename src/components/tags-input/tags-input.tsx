@@ -1,15 +1,21 @@
 import React from "react";
 import styles from "./tags-input.module.css";
 
-function TagsInput({ name, tags, setTags }: TagInputProps) {
+function TagsInput({ name, tags, onTagsChange }: TagInputProps) {
   function removeTags(removeIdx: number) {
-    setTags([...tags.filter((el, idx) => idx !== removeIdx)]);
+    onTagsChange({
+      field: name,
+      value: [...tags.filter((_, idx) => idx !== removeIdx)],
+    });
   }
 
   function addTags(evt: React.KeyboardEvent<HTMLInputElement>) {
     const input = evt.target as HTMLInputElement;
     if (input.value.trim().length > 0) {
-      setTags([...tags, input.value]);
+      onTagsChange({
+        field: name,
+        value: [...tags, input.value],
+      });
       input.value = "";
     }
   }
@@ -29,8 +35,8 @@ function TagsInput({ name, tags, setTags }: TagInputProps) {
       <input
         className={styles.input}
         type="text"
-        onKeyUp={(event) => (event.key === "Enter" ? addTags(event) : null)}
-        placeholder="Нажмите enter чтобы добавить тэг"
+        onKeyUp={(event) => (event.key === " " ? addTags(event) : null)}
+        placeholder="Нажмите пробел чтобы добавить тэг"
         name={name}
         id={name}
       />

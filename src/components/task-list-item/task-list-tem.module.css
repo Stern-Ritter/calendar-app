@@ -5,6 +5,14 @@
   box-shadow: 0px 0px 2px 4px rgba(106, 109, 123, 0.3);
 }
 
+.text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #292929;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -13,6 +21,37 @@
 .main {
   flex-grow: 1;
   align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.button {
+  composes: text;
+  cursor: pointer;
+  outline: none;
+  background: #d3d3d3;
+  border-radius: 4px;
+  border: none;
+  padding: 8px 8px;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #708090;
+}
+
+.edit {
+  composes: button;
+  margin-right: 8px;
+}
+
+.delete {
+  composes: button;
 }
 
 .timeliness {
@@ -36,14 +75,6 @@
   color: #292929;
 }
 
-.text {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.25;
-  color: #292929;
-}
-
 .element {
   composes: text;
   display: block;
@@ -56,6 +87,7 @@
 .date {
   composes: element;
   color: #708090;
+  text-align: right;
 }
 
 .tags {
