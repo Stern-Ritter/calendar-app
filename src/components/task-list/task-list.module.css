@@ -1,3 +1,31 @@
+.container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create {
+  max-height: 32px;
+  min-width: 72px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  background: #0052cc;
+  border-radius: 4px;
+  border: none;
+  padding: 8px 8px;
+  box-sizing: border-box;
+}
+
+.create:hover {
+  background: #708090;
+}
+
 .title {
   padding: 10px 0;
   margin: 0;
@@ -8,6 +36,7 @@
 }
 
 .remaining {
+  padding: 10px;
   display: block;
   font-style: normal;
   font-weight: normal;

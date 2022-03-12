@@ -1,4 +1,5 @@
 import Task from "../../model/Task";
+import { STATUS_TO_DO } from "../../utils/constants";
 import {
   TASK_FORM_SET_STATE,
   TASK_FORM_SET_VALUE,
@@ -30,10 +31,11 @@ type TASK_FORM_ACTION =
 const formInitialState = {
   id: "",
   name: "",
+  createdDate: Date.now(),
   eventDate: Date.now(),
   category: "",
   tags: [] as string[],
-  state: "to do",
+  state: STATUS_TO_DO,
   description: "",
 };
 

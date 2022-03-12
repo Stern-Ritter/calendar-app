@@ -151,7 +151,6 @@
 .status {
   composes: element;
   font-size: 16px;
-  text-transform: uppercase;
 }
 
 .description {

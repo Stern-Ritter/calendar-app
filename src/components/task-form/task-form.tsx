@@ -11,8 +11,16 @@ import Task from "../../model/Task";
 import styles from "./task-form.module.css";
 
 function TaskForm() {
-  const { id, name, eventDate, category, tags, state, description } =
-    useSelector((store: State) => store.form);
+  const {
+    id,
+    name,
+    eventDate,
+    createdDate,
+    category,
+    tags,
+    state,
+    description,
+  } = useSelector((store: State) => store.form);
   const dispatch = useDispatch();
 
   const onFormChange = (evt: FormEvent) => {
@@ -26,7 +34,6 @@ function TaskForm() {
 
   const onFormSubmit = (evt: FormEvent) => {
     evt.preventDefault();
-    const createdDate = Date.now();
     if (id === "") {
       const task = new Task({
         name,
@@ -54,64 +61,69 @@ function TaskForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={onFormSubmit}>
-      <label className={styles.label} htmlFor="name">
-        Название:
-      </label>
-      <input
-        className={styles.input}
-        type="text"
-        onChange={onFormChange}
-        value={name}
-        name="name"
-        id="name"
-        required
-      />
-      <label className={styles.label} htmlFor="eventDate">
-        Дата:
-      </label>
-      <input
-        className={styles.input}
-        type="datetime-local"
-        onChange={onFormChange}
-        value={eventDate}
-        name="eventDate"
-        id="eventDate"
-        required
-      />
-      <label className={styles.label} htmlFor="category">
-        Категория:
-      </label>
-      <input
-        className={styles.input}
-        type="text"
-        onChange={onFormChange}
-        value={category}
-        name="category"
-        id="category"
-        required
-      />
+    <>
+      <h1 className={styles.title}>
+        {id === "" ? "Создать задачу:" : "Изменить задачу: "}
+      </h1>
+      <form className={styles.form} onSubmit={onFormSubmit}>
+        <label className={styles.label} htmlFor="name">
+          Название:
+        </label>
+        <input
+          className={styles.input}
+          type="text"
+          onChange={onFormChange}
+          value={name}
+          name="name"
+          id="name"
+          required
+        />
+        <label className={styles.label} htmlFor="eventDate">
+          Дата:
+        </label>
+        <input
+          className={styles.input}
+          type="datetime-local"
+          onChange={onFormChange}
+          value={eventDate}
+          name="eventDate"
+          id="eventDate"
+          required
+        />
+        <label className={styles.label} htmlFor="category">
+          Категория:
+        </label>
+        <input
+          className={styles.input}
+          type="text"
+          onChange={onFormChange}
+          value={category}
+          name="category"
+          id="category"
+          required
+        />
 
-      <label className={styles.label} htmlFor="tags">
-        Название:
-      </label>
-      <TagsInput name="tags" tags={tags} onTagsChange={onTagsChange} />
+        <label className={styles.label} htmlFor="tags">
+          Название:
+        </label>
+        <TagsInput name="tags" tags={tags} onTagsChange={onTagsChange} />
 
-      <label className={styles.label} htmlFor="description">
-        Описание:
-      </label>
-      <textarea
-        className={styles.description}
-        onChange={onFormChange}
-        value={description}
-        name="description"
-        id="description"
-        required
-      />
-      <button className={styles.button} type="submit">
-        Создать
-      </button>
-    </form>
+        <label className={styles.label} htmlFor="description">
+          Описание:
+        </label>
+        <textarea
+          className={styles.description}
+          onChange={onFormChange}
+          value={description}
+          name="description"
+          id="description"
+          required
+        />
+        <button className={styles.button} type="submit">
+          {id === "" ? "Создать" : "Сохранить изменение"}
+        </button>
+      </form>
+    </>
   );
 }
 

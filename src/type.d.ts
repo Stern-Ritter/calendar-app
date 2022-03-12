@@ -1,6 +1,6 @@
 declare module "*.module.css";
 
-const taskStates = ["to do", "done"] as const;
+const taskStates = ["В работе", "Выполнено", "Просрочено"] as const;
 
 type TaskState = typeof taskStates[number];
 
