@@ -1,27 +1,43 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import { State } from "../../services/store/store";
 import {
+  getTaskById,
   setTaskFormValue,
   createTask,
   updateTask,
+  TASK_FORM_CLEAR_STATE,
 } from "../../services/actions";
 import TagsInput from "../tags-input/tags-input";
 import Task from "../../model/Task";
 import styles from "./task-form.module.css";
 
 function TaskForm() {
-  const {
-    id,
-    name,
-    eventDate,
-    createdDate,
-    category,
-    tags,
-    state,
-    description,
-  } = useSelector((store: State) => store.form);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const params = useParams<{ taskId?: string }>();
+
+  useEffect(() => {
+    dispatch({ type: TASK_FORM_CLEAR_STATE });
+    if (params.taskId) {
+      dispatch(getTaskById(params.taskId));
+    }
+  }, [dispatch, params]);
+
+  const {
+    hasError,
+    data: {
+      id,
+      name,
+      eventDate,
+      createdDate,
+      category,
+      tags,
+      state,
+      description,
+    },
+  } = useSelector((store: State) => store.form);
 
   const onFormChange = (evt: FormEvent) => {
     const input = evt.target as HTMLInputElement;
@@ -44,7 +60,7 @@ function TaskForm() {
         state,
         description,
       });
-      dispatch(createTask(task));
+      dispatch(createTask(task, history));
     } else {
       const task = new Task({
         id,
@@ -56,11 +72,17 @@ function TaskForm() {
         state,
         description,
       });
-      dispatch(updateTask(task));
+      dispatch(updateTask(task, history));
     }
   };
 
-  return (
+  const clearForm = () => {
+    dispatch({ type: TASK_FORM_CLEAR_STATE });
+  };
+
+  return hasError ? (
+    <p className={styles["edit-load-error"]}>Ошибка загрузки задачи...</p>
+  ) : (
     <>
       <h1 className={styles.title}>
         {id === "" ? "Создать задачу:" : "Изменить задачу: "}
@@ -119,9 +141,16 @@ function TaskForm() {
           id="description"
           required
         />
-        <button className={styles.button} type="submit">
-          {id === "" ? "Создать" : "Сохранить изменение"}
-        </button>
+        <div className={styles.buttons}>
+          {id === "" && (
+            <button className={styles.button} type="button" onClick={clearForm}>
+              Очистить форму
+            </button>
+          )}
+          <button className={styles.button} type="submit">
+            {id === "" ? "Создать" : "Сохранить изменение"}
+          </button>
+        </div>
       </form>
     </>
   );

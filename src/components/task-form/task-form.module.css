@@ -1,3 +1,13 @@
+.edit-load-error {
+  padding: 10px;
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 1.15;
+  color: red;
+}
+
 .title {
   padding: 10px 0;
   margin: 0;
@@ -45,9 +55,13 @@
   border-radius: 6px;
 }
 
+.buttons {
+  align-self: flex-end;
+}
+
 .button {
   composes: text;
-  align-self: flex-end;
+  margin-right: 8px;
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -56,4 +70,8 @@
   border: none;
   padding: 10px 24px;
   box-sizing: border-box;
+}
+
+.button:last-child {
+  margin-right: 0;
 }

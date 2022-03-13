@@ -1,11 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Task from "../../model/Task";
-import {
-  updateTask,
-  deleteTask,
-  TASK_FORM_SET_STATE,
-} from "../../services/actions";
+import { updateTask, deleteTask } from "../../services/actions";
 import {
   STATUS_TO_DO,
   STATUS_DONE,
@@ -16,6 +13,8 @@ import styles from "./task-list-item.module.css";
 
 function TaskListItem({ content }: { content: Task }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const id = content.getId();
   const { name, createdDate, eventDate, category, tags, state, description } =
     content;
@@ -37,7 +36,7 @@ function TaskListItem({ content }: { content: Task }) {
   };
 
   const editHandler = () => {
-    dispatch({ type: TASK_FORM_SET_STATE, payload: content });
+    history.push({ pathname: `/edit/${id}` });
   };
 
   const onChangeHandler = () => {
@@ -52,7 +51,7 @@ function TaskListItem({ content }: { content: Task }) {
         state: STATUS_DONE,
         description,
       });
-      dispatch(updateTask(task));
+      dispatch(updateTask(task, history));
     }
   };
 

@@ -15,6 +15,7 @@ module.exports = {
     environment: {
       arrowFunction: false,
     },
+    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
@@ -46,5 +47,6 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
+    historyApiFallback: true,
   },
 };

@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { State } from "../../services/store/store";
-import { getTasks, TASK_FORM_CLEAR_STATE } from "../../services/actions";
+import { getTasks } from "../../services/actions";
 import TaskListItem from "../task-list-item/task-list-item";
 import { STATUS_TO_DO } from "../../utils/constants";
 import styles from "./task-list.module.css";
@@ -13,14 +14,15 @@ function TaskList() {
     [tasks]
   );
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getTasks());
   }, []);
 
-  const addTaskHandler = () => {
-    dispatch({ type: TASK_FORM_CLEAR_STATE });
-  };
+  const addTaskHandler = useCallback(() => {
+    history.push({ pathname: "/create" });
+  }, [history]);
 
   return (
     <>

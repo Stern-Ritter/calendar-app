@@ -1,3 +1,4 @@
+import { RouteComponentProps } from "react-router-dom";
 import storage from "../../model/storage";
 import Task from "../../model/Task";
 import { TASK_FORM_CLEAR_STATE } from ".";
@@ -35,7 +36,10 @@ export function getTasks() {
   };
 }
 
-export function createTask(task: Task) {
+export function createTask(
+  task: Task,
+  history: RouteComponentProps["history"]
+) {
   return async function (dispatch: AppDispatch) {
     dispatch({ type: CREATE_TASK });
     try {
@@ -44,6 +48,7 @@ export function createTask(task: Task) {
         task.setId(id);
         dispatch({ type: CREATE_TASK_SUCCESS, payload: task });
         dispatch({ type: TASK_FORM_CLEAR_STATE });
+        history.push({ pathname: "/" });
       } else {
         dispatch({ type: CREATE_TASK_FAILED });
       }
@@ -53,7 +58,10 @@ export function createTask(task: Task) {
   };
 }
 
-export function updateTask(task: Task) {
+export function updateTask(
+  task: Task,
+  history: RouteComponentProps["history"]
+) {
   return async function (dispatch: AppDispatch) {
     dispatch({ type: UPDATE_TASK });
     try {
@@ -61,6 +69,7 @@ export function updateTask(task: Task) {
       if (success) {
         dispatch({ type: UPDATE_TASK_SUCCESS, payload: task });
         dispatch({ type: TASK_FORM_CLEAR_STATE });
+        history.push({ pathname: "/" });
       } else {
         dispatch({ type: UPDATE_TASK_FAILED });
       }
