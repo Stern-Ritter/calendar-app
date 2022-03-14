@@ -53,7 +53,7 @@ function TaskListItem({ content }: { content: Task }) {
   };
 
   return (
-    <li className={styles.item}>
+    <li className={styles.item} data-testid="list-item">
       <div className={styles.container}>
         <div className={styles.main}>
           <h3 className={styles.title}>{name}</h3>

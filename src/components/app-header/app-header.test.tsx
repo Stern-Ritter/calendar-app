@@ -1,5 +1,5 @@
 import React from "react";
-import { MemoryRouter } from "react-router";
+import { StaticRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import AppHeader from "./app-header";
@@ -7,9 +7,9 @@ import AppHeader from "./app-header";
 describe("AppHeader", () => {
   beforeEach(() => {
     render(
-      <MemoryRouter>
+      <StaticRouter>
         <AppHeader />
-      </MemoryRouter>
+      </StaticRouter>
     );
   });
   it("renders component", () => {
