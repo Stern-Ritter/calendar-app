@@ -35,7 +35,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544153,
         category: "first category",
         tags: ["first", "second", "third"],
-        state: "to do",
+        state: "В работе",
         description: "first description",
       },
       {
@@ -44,7 +44,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544163,
         category: "second category",
         tags: ["second", "third"],
-        state: "done",
+        state: "Выполнено",
         description: "second description",
       },
       {
@@ -53,7 +53,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544253,
         category: "third category",
         tags: ["third"],
-        state: "to do",
+        state: "В работе",
         description: "third description",
       },
     ];
@@ -82,7 +82,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544153,
         category: "first category",
         tags: ["first", "second"],
-        state: "to do",
+        state: "В работе",
         description: "first description",
       },
       {
@@ -91,7 +91,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544163,
         category: "second category",
         tags: ["second", "third"],
-        state: "done",
+        state: "Выполнено",
         description: "second description",
       },
       {
@@ -100,7 +100,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544163,
         category: "first category",
         tags: ["third"],
-        state: "done",
+        state: "Выполнено",
         description: "third description",
       },
     ];
@@ -129,7 +129,7 @@ describe("FirebaseTasksCalendar", () => {
     expect(tasks).not.toContainEqual(elements[1]);
     expect(tasks).toContainEqual(elements[2]);
 
-    tasks = (await storage.getAllWithFilter({ state: "done" })) as Task[];
+    tasks = (await storage.getAllWithFilter({ state: "Выполнено" })) as Task[];
     expect(tasks).toHaveLength(2);
     expect(tasks).not.toContainEqual(elements[0]);
     expect(tasks).toContainEqual(elements[1]);
@@ -156,7 +156,7 @@ describe("FirebaseTasksCalendar", () => {
       eventDate: 1643274544153,
       category: "first category",
       tags: ["first", "second", "third"],
-      state: "to do",
+      state: "В работе",
       description: "first description",
     };
     const taskObj = new Task(element);
@@ -174,7 +174,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544153,
         category: "first category",
         tags: ["first", "second", "third"],
-        state: "to do",
+        state: "В работе",
         description: "first description",
       },
       {
@@ -183,7 +183,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544163,
         category: "second category",
         tags: ["second", "third"],
-        state: "done",
+        state: "Выполнено",
         description: "second description",
       },
     ];
@@ -202,7 +202,7 @@ describe("FirebaseTasksCalendar", () => {
     const expectedTask = Object.assign(firstTask, {
       name: "new task",
       category: "new category",
-      state: "done",
+      state: "Выполнено",
       description: "new description",
     });
 
@@ -222,7 +222,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544153,
         category: "first category",
         tags: ["first", "second", "third"],
-        state: "to do",
+        state: "В работе",
         description: "first description",
       },
       {
@@ -231,7 +231,7 @@ describe("FirebaseTasksCalendar", () => {
         eventDate: 1643274544163,
         category: "second category",
         tags: ["second", "third"],
-        state: "done",
+        state: "Выполнено",
         description: "second description",
       },
     ];

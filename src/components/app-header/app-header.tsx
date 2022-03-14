@@ -7,7 +7,7 @@ function AppHeader() {
     <header className={styles.header} data-testid="header">
       <Link to="/" className={styles.logo}>
         <span className={styles.image} />
-        <span>Календарь задач</span>
+        Календарь задач
       </Link>
       <nav>
         <ul className={styles.list}>
