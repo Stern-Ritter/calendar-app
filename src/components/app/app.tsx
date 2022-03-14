@@ -15,13 +15,13 @@ function App() {
           <Route path="/" exact={true}>
             <TaskList />
           </Route>
-          <Route path="/create">
+          <Route path="/create" exact={true}>
             <TaskForm />
           </Route>
-          <Route path="/edit/:taskId">
+          <Route path="/edit/:taskId" exact={true}>
             <TaskForm />
           </Route>
-          <Route path="/about">
+          <Route path="/about" exact={true}>
             <About />
           </Route>
         </Switch>

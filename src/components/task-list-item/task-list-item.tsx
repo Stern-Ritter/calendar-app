@@ -18,10 +18,7 @@ function TaskListItem({ content }: { content: Task }) {
   const id = content.getId();
   const { name, createdDate, eventDate, category, tags, state, description } =
     content;
-  const status =
-    state === STATUS_TO_DO && Date.now() > new Date(eventDate).getTime()
-      ? STATUS_EXPIRED
-      : state;
+
   const formatedCreatedDate = new Date(createdDate).toLocaleString(
     "Ru-ru",
     dateTimeFormat
@@ -40,7 +37,7 @@ function TaskListItem({ content }: { content: Task }) {
   };
 
   const onChangeHandler = () => {
-    if (status === STATUS_TO_DO) {
+    if (state === STATUS_TO_DO) {
       const task = new Task({
         id,
         name,
@@ -97,10 +94,10 @@ function TaskListItem({ content }: { content: Task }) {
           <input
             type="checkbox"
             onChange={onChangeHandler}
-            checked={status === STATUS_DONE}
-            disabled={status === STATUS_EXPIRED}
+            checked={state === STATUS_DONE}
+            disabled={state === STATUS_EXPIRED}
           />
-          <span className={styles.status}>{status}</span>
+          <span className={styles.status}>{state}</span>
         </div>
       </div>
       <p className={styles.description}>{description}</p>

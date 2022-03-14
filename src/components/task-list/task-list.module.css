@@ -44,6 +44,34 @@
   line-height: 1.15;
 }
 
+.search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  width: 40%;
+  max-height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(41, 41, 41, 0.3);
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.status {
+  width: 40%;
+  max-height: 40px;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .list {
   max-width: 768px;
   padding: 10px;
