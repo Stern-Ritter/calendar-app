@@ -21,10 +21,10 @@ function TagsInput({ name, tags, onTagsChange }: TagInputProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="tags-input">
       <ul className={styles.list}>
         {tags.map((tag, index) => (
-          <li key={index} className={styles.tag}>
+          <li key={index} className={styles.tag} data-testid="tag">
             <span className={styles.title}>{tag}</span>
             <span className={styles.close} onClick={() => removeTags(index)}>
               x
@@ -35,7 +35,7 @@ function TagsInput({ name, tags, onTagsChange }: TagInputProps) {
       <input
         className={styles.input}
         type="text"
-        onKeyUp={(event) => (event.key === " " ? addTags(event) : null)}
+        onKeyDown={(event) => (event.key === " " ? addTags(event) : null)}
         placeholder="Нажмите пробел чтобы добавить тэг"
         name={name}
         id={name}
