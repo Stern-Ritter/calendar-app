@@ -87,7 +87,7 @@ function TaskForm() {
       <h1 className={styles.title}>
         {id === "" ? "Создать задачу:" : "Изменить задачу: "}
       </h1>
-      <form className={styles.form} onSubmit={onFormSubmit}>
+      <form className={styles.form} onSubmit={onFormSubmit} name="task-form">
         <label className={styles.label} htmlFor="name">
           Название:
         </label>
@@ -104,6 +104,7 @@ function TaskForm() {
           Дата:
         </label>
         <input
+          data-testid="date"
           className={styles.input}
           type="datetime-local"
           onChange={onFormChange}
@@ -126,7 +127,7 @@ function TaskForm() {
         />
 
         <label className={styles.label} htmlFor="tags">
-          Название:
+          Тэги:
         </label>
         <TagsInput name="tags" tags={tags} onTagsChange={onTagsChange} />
 

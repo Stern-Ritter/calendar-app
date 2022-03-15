@@ -101,4 +101,4 @@ const formReducer = (state = formInitialState, action: TASK_FORM_ACTION) => {
   }
 };
 
-export default formReducer;
+export { formInitialState, formReducer };
