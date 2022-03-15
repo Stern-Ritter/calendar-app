@@ -47,6 +47,7 @@
 .search-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .search {
@@ -64,7 +65,6 @@
 
 .status {
   width: 40%;
-  max-height: 40px;
   border-radius: 6px;
   font-style: normal;
   font-weight: normal;

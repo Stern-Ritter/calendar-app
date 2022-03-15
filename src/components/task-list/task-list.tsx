@@ -114,17 +114,20 @@ function TaskList() {
         {toDoTasksCount} из {tasks.length} осталось
       </span>
       <div className={styles["search-container"]}>
-        <Select
-          className={styles.status}
-          placeholder={"Статус выполнения..."}
-          value={
-            statusValue ? { value: statusValue, label: statusValue } : null
-          }
-          onChange={onStatusChange}
-          options={options}
-          isClearable
-          isSearchable
-        />
+        <div className={styles.status}>
+          <label htmlFor="status">Статус выполнения</label>
+          <Select
+            inputId="status"
+            placeholder="Выберите"
+            value={
+              statusValue ? { value: statusValue, label: statusValue } : null
+            }
+            onChange={onStatusChange}
+            options={options}
+            isClearable
+            isSearchable
+          />
+        </div>
         <input
           className={styles.search}
           type="text"
@@ -133,7 +136,7 @@ function TaskList() {
           onChange={onSearchChange}
         />
       </div>
-      <ul className={styles.list}>
+      <ul className={styles.list} data-testid="task-list">
         {filteredTasks.map((content, idx) => (
           <TaskListItem key={idx} content={content} />
         ))}

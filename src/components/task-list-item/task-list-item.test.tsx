@@ -3,12 +3,10 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import * as redux from "react-redux";
-import * as router from "react-router";
 import TaskListItem from "./task-list-item";
 import Task from "../../model/Task";
 import * as actions from "../../services/actions/task-list";
 
-const useSelectorSpy = jest.spyOn(redux, "useSelector");
 const useDispatchSpy = jest.spyOn(redux, "useDispatch");
 const mockDispatchFn = jest.fn();
 const mockHistoryFn = jest.fn();
@@ -33,7 +31,6 @@ const options: TaskOptions = {
 
 describe("TaskListItem", () => {
   beforeAll(() => {
-    useSelectorSpy.mockReturnValue({});
     useDispatchSpy.mockReturnValue(mockDispatchFn);
   });
 
