@@ -8,7 +8,7 @@ import styles from "./app.module.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <AppHeader />
       <main className={styles.main}>
         <Switch>
