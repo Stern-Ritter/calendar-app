@@ -15,7 +15,6 @@ module.exports = {
     environment: {
       arrowFunction: false,
     },
-    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
