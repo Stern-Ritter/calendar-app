@@ -6,6 +6,7 @@ import * as redux from "react-redux";
 import TaskListItem from "./task-list-item";
 import Task from "../../model/Task";
 import * as actions from "../../services/actions/task-list";
+import { dateTimeFormat } from "../../utils/constants";
 
 const useDispatchSpy = jest.spyOn(redux, "useDispatch");
 const mockDispatchFn = jest.fn();
@@ -60,7 +61,7 @@ describe("TaskListItem", () => {
     const task = new Task(options);
     render(<TaskListItem content={task} />);
     expect(screen.getByText(/Дата создания:/)).toHaveTextContent(
-      `Дата создания: 27 янв. 2022 г., 11:59`
+      new Date(task.createdDate).toLocaleString("Ru-ru", dateTimeFormat)
     );
   });
 
@@ -68,7 +69,7 @@ describe("TaskListItem", () => {
     const task = new Task(options);
     render(<TaskListItem content={task} />);
     expect(screen.getByText(/Выполнить до:/)).toHaveTextContent(
-      `Выполнить до: 03 мар. 2022 г., 05:29`
+      new Date(task.eventDate).toLocaleString("Ru-ru", dateTimeFormat)
     );
   });
 
